@@ -797,12 +797,9 @@ class PacketRelay():
                 addrs = self.nif.ifaddresses(ifname[:ifname.find(':')])
 
             if self.nif.AF_LINK in addrs:
-                mac = addrs[self.nif.AF_LINK][0]['addr']
-            elif self.allowNonEther:
-                mac = '00:00:00:00:00:00'
+                mac = addrs[self.nif.AF_LINK][0]['addr']     
             else:
-                print('Unable to detect MAC address for interface %s.' % ifname)
-                sys.exit(1)
+                mac = '00:00:00:00:00:00'
 
             # These functions all return a value in string format, but our
             # only use for a MAC address later is when we concoct a packet
